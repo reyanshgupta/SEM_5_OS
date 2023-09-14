@@ -33,11 +33,19 @@ def round_robin(processes, quantum):
     # TAT
     for i in range(len(processes)):
         turnaround_time[i] = processes[i].burst_time + waiting_time[i]
+        
+    sumturnaroundtime = sum(turnaround_time)
+    sumwaitingtime = sum(waiting_time)
+    avgturnaroundtime = sumturnaroundtime / len(processes)
+    avgwaitingtime = sumwaitingtime / len(processes)
+    
+    
     
     # Printing Results
     print("Process\tWaiting Time\tTurnaround Time")
     for i in range(len(processes)):
         print(processes[i].name,"\t",waiting_time[i],"\t\t",turnaround_time[i])
+    print("Avg TurnAroundTime: ",avgturnaroundtime, "\nAvg WaitingTime: ",avgwaitingtime)
 
 if __name__ == "__main__":
     processes = [
